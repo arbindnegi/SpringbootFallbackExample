@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: API_GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+      - id: STUDENT-SERVICE
+        uri: http://localhost:8081/
+        predicates:
+        - Path=/student/**
+      - id: COLLAGE-SERVICE
+        uri: http://localhost:8082/
+        predicates:
+        - Path=/collage/**
+
+ #http://localhost:8080/collage/collageId/1
